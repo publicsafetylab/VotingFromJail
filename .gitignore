@@ -1,0 +1,14 @@
+*.csv
+*.DS_Store
+*.html
+*.ipynb
+*.json
+*.log
+*.pyc
+*.txt
+**/__pycache__
+.env
+.idea
+.ipynb_checkpoints/
+.pre-commit-config.yaml
+.vscode/
