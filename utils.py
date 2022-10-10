@@ -216,8 +216,6 @@ def model(to_model, dependent, independent, entity_fx, time_fx):
     if time_fx:
         formula += " + TimeEffects"
 
-    print(formula)
-
     # Model and fit with clustered co-variance, optional entity and time effects.
     panel_model = PanelOLS.from_formula(formula=formula, data=to_model)
     panel_fit = panel_model.fit(cov_type="clustered", cluster_entity=entity_fx, cluster_time=time_fx)
@@ -392,7 +390,7 @@ param_map = {
     "l2_voted_indicator": "Turnout",
     # Full bookings.
     "matched": "Registered (Matched)",
-    "matched_registered": "Registered (Matched) by Election Day",
+    "matched_registered": "Registered by Election Day",
     "jdi_age": "Age",
     "jdi_gender_M": "Male",
     "jdi_gender_F": "Female",
@@ -413,14 +411,22 @@ table_sorter = [
     "White",
     "Democrat",
     "Republican",
+    "Non-Partisan or Other Party",
     "Male",
     "Number of Charges",
-    "Top Charge: DUI",
-    "Top Charge: Drug",
-    "Top Charge: Property",
-    "Top Charge: Public Order",
     "Top Charge: Violent",
-    "Has L2 Match"
+    "Top Charge: Property",
+    "Top Charge: Drug",
+    "Top Charge: Public Order",
+    "Top Charge: DUI",
+    "Top Charge: Criminal Traffic",
+    "Length of Stay (days)",
+    "Confined During Voting Days",
+    "Proportion of Voting Days Confined",
+    "Registered (Matched)",
+    "Registered by Election Day",
+    "Turnout",
+    "Observations"
 ]
 
 

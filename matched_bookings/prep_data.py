@@ -59,19 +59,19 @@ class MatchDataPrep:
         # Threshold matches on probability score (from input column).
         self.logger.info(f"Thresholding > {self.threshold} on {self.thresholding_column}.")
         df = df[df[self.thresholding_column] > self.threshold]
-        self.logger.info(f"Matched records: {df.shape}.")
+        self.logger.info(f"Matched records: {len(df)}.")
 
         # Subset to active voters if specified (in input).
         if self.active:
             self.logger.info("Filtering to L2-Active voters.")
             df = df[df["l2_active"] == 1]
-            self.logger.info(f"Matched records: {df.shape}.")
+            self.logger.info(f"Matched records: {len(df)}.")
 
         # Subset to voters registered pre-Election Day.
         if self.registered:
             self.logger.info("Filtering to voters registered by Election Day.")
             df = df[df["l2_date_registered_calculated"] <= self.election_day]
-            self.logger.info(f"Matched records: {df.shape}.")
+            self.logger.info(f"Matched records: {len(df)}.")
 
         # Create length of stay (LOS) feature.
         df["jdi_length_of_stay"] = (df["jdi_date_release"] - df["jdi_date_admission"]).dt.days + 1
